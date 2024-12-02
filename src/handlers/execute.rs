@@ -10,7 +10,7 @@ use abstract_app::std::{
     ans_host::AssetPairingMapEntry,
     objects::{AnsAsset, AssetEntry, DexName},
 };
-use abstract_dex_adapter::DexInterface;
+use abstract_dex_adapter::{api::ans::AnsDex, DexInterface};
 use cosmwasm_std::{
     Addr, CosmosMsg, Decimal, DepsMut, Env, MessageInfo, Response, Storage, Uint128,
 };
@@ -122,9 +122,9 @@ pub fn tip(
         {
             // TODO 2
             // Here, you need to find how to get the dex variable from the module variable.
-            // This is how the Abstract SDK works, from the `module` variable available in every endpoint, 
-            // you are able to get objects that will allow communicating with other modules 
-            let dex = todo!();
+            // This is how the Abstract SDK works, from the `module` variable available in every endpoint,
+            // you are able to get objects that will allow communicating with other modules
+            let dex: AnsDex<PaymentApp> = todo!();
             let trigger_swap_msg = dex.swap(
                 pay_asset.clone(),
                 desired_asset.clone(),
