@@ -38,7 +38,11 @@ type PaymentTestSetup = (
 fn setup(mock: MockBech32, desired_asset: Option<AssetEntry>) -> anyhow::Result<PaymentTestSetup> {
     let app = PaymentAppInterface::new(APP_ID, mock.clone());
 
-    let abstr_deployment = Abstract::deploy_on(mock.clone(), ())?;
+    // TODO 3
+    // Here during tests, you need to deploy Abstract on your chain to be able to use it and access everything 
+    // See here if you need help : 
+    // https://docs.rs/abstract-interface/latest/abstract_interface/struct.Abstract.html#impl-Deploy%3CChain%3E-for-Abstract%3CChain%3E
+    let abstr_deployment = todo!();
 
     let dex_adapter = abstract_dex_adapter::interface::DexAdapter::new(
         abstract_dex_adapter::DEX_ADAPTER_ID,

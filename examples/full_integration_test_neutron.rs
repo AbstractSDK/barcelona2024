@@ -219,7 +219,8 @@ fn create_remote_pool(
         }],
     }])?;
 
-    let pool_id = response.packets[0].ack_tx.tx_id.get_events("pool_created")[0].get_attributes("pool_id")[0]
+    let pool_id = todo!();
+    //response.packets[0].ack_tx.tx_id.get_events("pool_created")[0].get_attributes("pool_id")[0]
         .value
         .parse()?;
     Ok(pool_id)

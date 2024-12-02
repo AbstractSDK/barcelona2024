@@ -120,7 +120,11 @@ pub fn tip(
             .into_iter()
             .find(|(pair, refs)| !refs.is_empty() && exchange_strs.contains(&pair.dex()))
         {
-            let dex = module.ans_dex(deps.as_ref(), &env, pair.dex().to_owned());
+            // TODO 2
+            // Here, you need to find how to get the dex variable from the module variable.
+            // This is how the Abstract SDK works, from the `module` variable available in every endpoint, 
+            // you are able to get objects that will allow communicating with other modules 
+            let dex = todo!();
             let trigger_swap_msg = dex.swap(
                 pay_asset.clone(),
                 desired_asset.clone(),

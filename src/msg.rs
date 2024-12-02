@@ -5,6 +5,9 @@ use cosmwasm_std::Addr;
 
 use crate::contract::PaymentApp;
 
+// TODO 1
+// Understand where you create your messages, and what you can change in your business logic
+
 // This is used for type safety
 // The second part is used to indicate the messages are used as the apps messages
 // This is equivalent to
@@ -29,7 +32,8 @@ pub struct AppInstantiateMsg {
 #[cosmwasm_schema::cw_serde]
 #[derive(cw_orch::ExecuteFns)]
 pub enum AppExecuteMsg {
-    #[cw_orch(payable)]
+    // TODO 3 : This endpoint should receive some funds, so cw-orch should know that
+    // https://orchestrator.abstract.money/contracts/entry-points.html?highlight=payable#payable-attribute
     Tip {},
     UpdateConfig {
         desired_asset: Option<Clearable<AssetEntry>>,

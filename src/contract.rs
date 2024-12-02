@@ -32,7 +32,8 @@ const APP: PaymentApp = PaymentApp::new(APP_ID, APP_VERSION, None)
     .with_query(handlers::query_handler)
     .with_migrate(handlers::migrate_handler)
     // Specify dependencies
-    .with_dependencies(&[DEX_DEPENDENCY]);
+    // TODO 0
+    ;
 // ANCHOR_END: dependencies
 
 // Export handlers
