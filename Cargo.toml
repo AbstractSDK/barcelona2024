@@ -1,0 +1,78 @@
+[package]
+authors = [
+  "CyberHoward <cyberhoward@protonmail.com>",
+  "Riada <riada@abstract.money>",
+  "Abstract Money <contact@abstract.money>",
+]
+edition = "2021"
+name = "payment-app"
+version = "0.4.0"
+
+exclude = ["contract.wasm", "hash.txt"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[[example]]
+name              = "schema"
+required-features = ["schema"]
+
+[[example]]
+name = "deploy"
+
+[features]
+default = ["export"]
+export  = []
+# enable node-backed tests (ensure Docker is running)
+# run with `cargo test --jobs 1 --features node-tests`
+node-tests = []
+schema     = ["abstract-app/schema"]
+
+[dependencies]
+cosmwasm-schema = { version = "2.0" }
+cosmwasm-std    = { version = "2.0" }
+cw-asset        = { version = "4.0" }
+cw-controllers  = { version = "2.0" }
+cw-storage-plus = "2.0.0"
+cw20            = { version = "2.0.0" }
+thiserror       = { version = "1.0.50" }
+
+abstract-app         = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea" }
+abstract-dex-adapter = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea", default-features = false }
+
+cw-orch = { version = "0.27.0" }
+
+# Dependencies for interface
+[dev-dependencies]
+abstract-app               = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea", features = ["test-utils"] }
+abstract-integration-tests = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea" }
+abstract-interface         = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea", features = ["daemon"] }
+clap                       = { version = "4.0.32", features = ["derive"] }
+cw-orch                    = { version = "0.27.0", features = ["daemon"] }
+dotenv                     = "0.15.0"
+env_logger                 = "0.11.3"
+semver                     = "1.0"
+
+cw-plus-orch = { version = "0.25.0" }
+cw20         = { version = "2.0.0" }
+cw20-base    = { version = "2.0.0" }
+
+abstract-dex-adapter = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea", features = ["wynd", "testing"] }
+mockdex-bundle       = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea" }
+
+
+[patch.crates-io]
+
+abstract-adapter               = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea" }
+abstract-adapter-utils         = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea" }
+abstract-app                   = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea" }
+abstract-client                = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea" }
+abstract-dex-standard          = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea" }
+abstract-interface             = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea" }
+abstract-macros                = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea" }
+abstract-money-market-standard = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea" }
+abstract-sdk                   = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea" }
+abstract-staking-standard      = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea" }
+abstract-standalone            = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea" }
+abstract-std                   = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea" }
+abstract-testing               = { git = "https://github.com/abstractsdk/abstract", rev = "34cd097ea" }
