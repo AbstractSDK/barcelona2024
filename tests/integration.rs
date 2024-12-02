@@ -169,7 +169,9 @@ fn test_simple_tip() -> anyhow::Result<()> {
     let tip_coins = coins(tip_amount, tip_currency.clone());
     mock.set_balance(&tipper, tip_coins.clone())?;
 
-    app.call_as(&tipper).tip(&tip_coins)?;
+    // TODO 4
+    // Here you wanth the tipper to tip the tip_coins to the payment app. 
+    todo!();
 
     let balance = mock.query_balance(&account.address()?, &tip_currency)?;
     assert_eq!(balance, Uint128::from(tip_amount));
@@ -250,7 +252,8 @@ fn test_tip_swap() -> anyhow::Result<()> {
     let tip_coins = coins(tip_amount, tip_currency.clone());
     mock.set_balance(&tipper, tip_coins.clone())?;
 
-    app.call_as(&tipper).tip(&tip_coins)?;
+    // TODO 4
+    // Here you wanth the tipper to tip the tip_coins to the payment app. 
 
     let balance = mock.query_balance(&account.address()?, &target_currency)?;
     assert!(!balance.is_zero());

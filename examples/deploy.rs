@@ -30,11 +30,12 @@ use semver::Version;
 fn deploy(networks: Vec<ChainInfo>) -> anyhow::Result<()> {
     // run for each requested network
     for network in networks {
-        let version: Version = APP_VERSION.parse().unwrap();
-        let chain = DaemonBuilder::new(network).build()?;
-
-        let app = PaymentAppInterface::new(APP_ID, chain);
-        app.deploy(version, DeployStrategy::Try)?;
+        // TODO 5, deployment
+        // Here you want to deploy your app for the selected networks
+        // Step 1, you need to create a cw_orch::daemon::Daemon object to be able to interact with the network
+        // Step 2, you need to deploy the Payment App on the chain for other users to be able to install it
+        // Step 1 Help : https://docs.rs/cw-orch-daemon/latest/cw_orch_daemon/struct.DaemonBase.html#impl-DaemonBase%3CSender%3E (builder)
+        // Step 2 Help : https://docs.rs/abstract-interface/latest/abstract_interface/trait.AppDeployer.html (PaymentAppInterface)
     }
     Ok(())
 }
